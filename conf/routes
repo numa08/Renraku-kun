@@ -4,6 +4,16 @@
 
 # Home page
 GET     /                           controllers.Application.index
+GET     /event/:id                  controllers.Application.event(id : String)
+POST    /events                     controllers.Application.newEvent
+POST    /event/:id/members          controllers.Application.addMember(id : String)
+POST    /event/:id/message          controllers.Application.sendMessage(id : String)
+DELETE  /event/:id/member/:mId      controllers.Application.deleteMember(id : String, mId : Long)
+GET     /callback                   org.pac4j.play.CallbackController.callback()
+POST    /callback                   org.pac4j.play.CallbackController.callback()
+GET     /casProxyCallback           org.pac4j.play.CallbackController.callback()
+POST    /casProxyCallback           org.pac4j.play.CallbackController.callback()
+GET     /logout                     org.pac4j.play.CallbackController.logoutAndRedirect()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

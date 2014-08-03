@@ -1,0 +1,17 @@
+@(events : List[Event], eventForm : Form[String])
+
+@import helper._
+
+<h1>@events.size event(s)</h1>
+<ul>
+    @for( e <- events) {
+        <li>
+            <a href="/event/@e.id">@e.title</a>
+        </li>
+    }
+</ul>
+<h2>Create New Event</h2>
+@form(routes.Application.newEvent) {
+@inputText(eventForm("title"))
+        <input type="submit" value="Create"/>
+}

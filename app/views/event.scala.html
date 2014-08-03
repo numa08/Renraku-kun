@@ -1,0 +1,35 @@
+@(event : Event, members : List[Member], memberForm:Form[String], messageForm:Form[String])
+
+@import helper._
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>@event.title</title>
+</head>
+<body>
+<h1>@event.title</h1>
+<h2>Members</h2>
+<ul>
+    @members.map{ member =>
+        <li>
+            @member.name
+            @form(routes.Application.deleteMember(event.id, member.id)) {
+            <input type="submit" value="Delete"/>
+            }
+        </li>
+    }
+</ul>
+
+@form(routes.Application.addMember(event.id)) {
+    @textarea(memberForm("members"))
+    <input type="submit" VALUE="Add"/>
+}
+
+@form(routes.Application.sendMessage(event.id)) {
+    @textarea(messageForm("message"))
+    <input type="submit" value="Send"/>
+}
+</body>
+</html>

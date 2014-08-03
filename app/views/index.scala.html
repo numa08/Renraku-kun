@@ -1,7 +1,13 @@
-@(message: String)
+@(content : Html)
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>イベント関係者に一気に連絡する君</title>
+</head>
+<body>
 
-@main("Welcome to Play") {
-
-    @play20.welcome(message)
-
-}
+<h1>イベント関係者にまとめて連絡する君</h1>
+@content
+</body>
+</html>
